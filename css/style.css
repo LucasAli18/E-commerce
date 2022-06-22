@@ -16,6 +16,7 @@ body {
   height: 500px;
   box-shadow: 0 0 16px black;
   padding: 1em;
+  margin: 3em;
 }
 
 .contenedor figure img{
