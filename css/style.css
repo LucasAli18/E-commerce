@@ -8,11 +8,14 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 1em auto;
 }
 .contenedor figure{
   width: 30%;
+  background-color: beige;
   height: 500px;
   box-shadow: 0 0 16px black;
+  padding: 1em;
 }
 
 .contenedor figure img{
@@ -22,4 +25,13 @@ body {
 a{
   text-decoration: none;
   color: black;
+}
+
+figcaption{
+  margin-top: 1em;
+  font-size: 2em;
+}
+
+section{
+  margin: 3em auto;
 }

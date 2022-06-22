@@ -40,8 +40,7 @@ function mostrarProductos(){
       total +=  campera;
       carrito += "campera \n";
       alert("Se agrego: campera  al carrito");
-      alert(carrito)
-      alert(total)
+      alert("Su carrito es:\n" +carrito + "\nTotal de $"+total)
       mostrarProductos();
       break
     case "5":
