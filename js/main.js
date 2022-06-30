@@ -1,59 +1,53 @@
+// Funciones
 function solicitarNombre(){
+
   let nombre = prompt("Ingrese su nombre");
 
-  while (nombre === ""){
-    nombre = prompt("Ingrese su nombre");
-  }
 
-  return nombre
+  while ((nombre == "") || (nombre == null)) {
+    nombre = prompt("Ingresá tu nombre por favor.");
+  }
+  alert("Bienvenido a Wombat Shorwoom "+ nombre);
+
+  return nombre;
 }
 
-
 function mostrarProductos(){
-  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4)Campera \n5) Ver carrito \n6) Finalizar compra \n7) Salir");
-  while(producto<1 || producto>8){
-    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4)Campera \n5) Ver carrito \n6) Finalizar compra \n7) Salir")
+  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6) Salir");
+  while(producto<1 || producto>7){
+    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6) Salir")
   }
   switch(producto){
     case "1":
-      total += sweater;
-      carrito += "Sweater \n";
-      alert("Se agrego: sweater al carrito");
-      alert("Su carrito es:\n" +carrito + "\nTotal de $"+total)
+      total += prenda3.precio;
+      carrito.push(prenda3.tipo);
+      alert("Se agrego:" + prenda3.tipo +" al carrito de la marca "+prenda3.marca);
+      alert(carrito + "\n" + total)
       mostrarProductos();
     break
     case "2":
-      total += jogger;
-      carrito += "jogger \n";
-      alert("Se agrego: jogger al carrito");
-      alert("Su carrito es:\n" +carrito + "\nTotal de $"+total)
+      total += total += prenda1.precio;
+      carrito.push(prenda1.tipo);
+      alert("Se agrego:" + prenda1.tipo +" al carrito de la marca "+prenda1.marca);
+      alert(carrito + "\n" + total)
       mostrarProductos();
     break
     case "3":
-      total += remera;
-      carrito += "remera \n";
-      alert("Se agrego: remera al carrito");
-      alert("Su carrito es:\n" +carrito + "\nTotal de $"+total)
+      total += prenda2.precio;
+      carrito.push(prenda2.tipo);
+      alert("Se agrego:" + prenda2.tipo +" al carrito de la marca "+prenda2.marca);
+      alert(carrito + "\n" + total)
       mostrarProductos();
       break
     case "4":
-      total +=  campera;
-      carrito += "campera \n";
-      alert("Se agrego: campera  al carrito");
-      alert("Su carrito es:\n" +carrito + "\nTotal de $"+total)
+      alert(carrito + "\n\n$" + total)
+      console.log(carrito);
       mostrarProductos();
       break
     case "5":
-      alert("Su carrito es:\n" + carrito + "\nTotal de $"+total);
-      mostrarProductos();
-      break
-    case "6":
       alert("Gracias por su compra");
-      alert("Su carrito es:\n" + carrito + "\nTotal de $"+total);
-      carrito = "";
-      total = 0;
       break
-      case "7":
+      case "6":
         alert("Gracias vuelva pronto");
         break
     default:
@@ -71,23 +65,43 @@ function decidir(){
     return decision
 }
 
+// Array
+const RopaEnVenta = [];
+const carrito = [];
+
 //Declaro las variables
-let total = 0;
-let carrito = "";
 let sweater = 4000;
-let jogger = 4700;
-let campera = 5000;
+let jogger = 5000;
 let remera = 2000;
+let total = 0;
 
-//Llamo la funcion de solicitarNombre
+// Objetos
+class Prenda {
+  constructor(id, tipo, marca, precio) {
+      this.id = id;
+      this.tipo = tipo
+      this.marca = marca;
+      this.precio = precio;
+  }
+}
+
+const prenda1 = new Prenda(1, " Jogger ", "Kevingstone", 5000);
+const prenda2 = new Prenda(2," Remera ", "Orso Bianco", 2000);
+const prenda3 = new Prenda(3, " Sweater ", "Hollister" , 4000);
+
+RopaEnVenta.push(prenda1);
+RopaEnVenta.push(prenda2);
+RopaEnVenta.push(prenda3);
+
+console.log(RopaEnVenta);
+
+
+//Comenzamos
 let nombre = solicitarNombre()
-
 //Llamo la funcion de decidir
 let decision = decidir()
     if((decision==="Si") || (decision==="si")|| (decision==="sI") || (decision==="SI")){
-
       //Llamo la funcion de mostrar productos
-
        mostrarProductos()
 
     }
