@@ -13,9 +13,9 @@ function solicitarNombre(){
 }
 
 function mostrarProductos(){
-  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6) Salir");
-  while(producto<1 || producto>7){
-    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6) Salir")
+  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir");
+  while(producto<1 || producto>8){
+    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir")
   }
   switch(producto){
     case "1":
@@ -47,7 +47,15 @@ function mostrarProductos(){
     case "5":
       alert("Gracias por su compra");
       break
-      case "6":
+    case "6":
+        let prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
+        let resultado = RopaEnVenta.find((el) => el.id === prendabuscada);
+        console.log(resultado);
+        alert("El precio del " + resultado.tipo + " es " + resultado.precio);
+        resultado = "";
+        mostrarProductos();
+        break
+      case "7":
         alert("Gracias vuelva pronto");
         break
     default:
