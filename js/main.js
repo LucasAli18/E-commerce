@@ -49,6 +49,9 @@ function mostrarProductos(){
       break
     case "6":
         let prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
+        while(prendabuscada<1 || prendabuscada>3){
+          prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
+        }
         let resultado = RopaEnVenta.find((el) => el.id === prendabuscada);
         console.log(resultado);
         alert("El precio del " + resultado.tipo + " es " + resultado.precio);
