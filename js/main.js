@@ -46,12 +46,15 @@ function mostrarProductos(){
       break
     case "5":
       alert("Gracias por su compra");
+      let resumen = document.createElement("div");
+      resumen.innerHTML = '<p class="text-light bg-dark border border-info fs-3 text-center">Gracias por elegirnos! Su pago total fue: $'+ total +'</p>'
+      document.body.appendChild(resumen)
+     // document.getElementById("carro").innerHTML = "Tu carrito es " + carrito +" con un total de $" + total
       break
     case "6":
         let prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
         while(prendabuscada<1 || prendabuscada>3){
-          prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
-        }
+          prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"))};
         let resultado = RopaEnVenta.find((el) => el.id === prendabuscada);
         console.log(resultado);
         alert("El precio del " + resultado.tipo + " es " + resultado.precio);
