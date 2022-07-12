@@ -1,38 +1,3 @@
-// Defino los productos
-let stock = [
-  {
-      id: 1,
-      nombre: "Campera",
-      imagen:"./img/SW_lanilla_A.jpg",
-  },
-  {
-      id: 2,
-      nombre: "Sweatter",
-      imagen:"./img/SW_lanilla_B.jpg",
-  },
-  {
-      id: 3,
-      nombre: "Jogger",
-      imagen:"./img/SW_lanilla_G.jpg",
-  },
-  {
-      id: 4,
-      nombre: "Bermuda",
-      imagen:"./img/SW_lanilla_N.jpg",
-  },
-  {
-      id: 5,
-      nombre: "Basica",
-      imagen:"./img/SW_lanilla_V.jpg",
-  },
-  {
-    id: 6,
-    nombre: "Botones",
-    imagen:"./img/SW_lanilla_V.jpg",
-}
-  
-]
-
 // Evento
 
 let boton = document.getElementById("button");
