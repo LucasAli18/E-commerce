@@ -1,124 +1,48 @@
-// Funciones
-function solicitarNombre(){
-
-  let nombre = prompt("Ingrese su nombre");
-
-
-  while ((nombre == "") || (nombre == null)) {
-    nombre = prompt("Ingresá tu nombre por favor.");
+// Defino los productos
+let stock = [
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"./img/SW_lanilla_A.jpg",
+  },
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"./img/SW_lanilla_B.jpg",
+  },
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"./img/SW_lanilla_G.jpg",
+  },
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"./img/SW_lanilla_N.jpg",
+  },
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"./img/SW_lanilla_V.jpg",
   }
-  alert("Bienvenido a Wombat Shorwoom "+ nombre);
+  
+]
 
-  return nombre;
-}
+// Evento
 
-function mostrarProductos(){
-  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir");
-  while(producto<1 || producto>8){
-    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir")
-  }
-  switch(producto){
-    case "1":
-      total += prenda3.precio;
-      carrito.push(prenda3.tipo);
-      alert("Se agrego:" + prenda3.tipo +" al carrito de la marca "+prenda3.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-    break
-    case "2":
-      total += total += prenda1.precio;
-      carrito.push(prenda1.tipo);
-      alert("Se agrego:" + prenda1.tipo +" al carrito de la marca "+prenda1.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-    break
-    case "3":
-      total += prenda2.precio;
-      carrito.push(prenda2.tipo);
-      alert("Se agrego:" + prenda2.tipo +" al carrito de la marca "+prenda2.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-      break
-    case "4":
-      alert(carrito + "\n\n$" + total)
-      console.log(carrito);
-      mostrarProductos();
-      break
-    case "5":
-      alert("Gracias por su compra");
-      let resumen = document.createElement("div");
-      resumen.innerHTML = '<p class="text-light bg-dark border border-info fs-3 text-center">Gracias por elegirnos! Su pago total fue: $'+ total +'</p>'
-      document.body.appendChild(resumen)
-      break
-    case "6":
-        let prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
-        while(prendabuscada<1 || prendabuscada>3){
-          prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"))};
-        let resultado = RopaEnVenta.find((el) => el.id === prendabuscada);
-        console.log(resultado);
-        alert("El precio del " + resultado.tipo + " es " + resultado.precio);
-        resultado = "";
-        mostrarProductos();
-        break
-      case "7":
-        alert("Gracias vuelva pronto");
-        break
-    default:
-      alert("Elija una opción");
-      mostrarProductos();
-      break
-  }
-}
-
-function decidir(){
-  let decision = prompt("Estas con ganas de renovar tu outfit "+ nombre +"? \n Si \n No ");
-  while(decision === "") {
-    decision = prompt("Estas con ganas de renovar tu outfit "+ nombre +"? \n Si \n No ");
-  }
-    return decision
-}
-
-// Array
-const RopaEnVenta = [];
-const carrito = [];
-
-//Declaro las variables
-let sweater = 4000;
-let jogger = 5000;
-let remera = 2000;
-let total = 0;
-
-// Objetos
-class Prenda {
-  constructor(id, tipo, marca, precio) {
-      this.id = id;
-      this.tipo = tipo
-      this.marca = marca;
-      this.precio = precio;
-  }
-}
-
-const prenda1 = new Prenda(1, " Jogger ", "Kevingstone", 5000);
-const prenda2 = new Prenda(2," Remera ", "Orso Bianco", 2000);
-const prenda3 = new Prenda(3, " Sweater ", "Hollister" , 4000);
-
-RopaEnVenta.push(prenda1);
-RopaEnVenta.push(prenda2);
-RopaEnVenta.push(prenda3);
-
-console.log(RopaEnVenta);
-
-
-//Comenzamos
-let nombre = solicitarNombre()
-//Llamo la funcion de decidir
-let decision = decidir()
-    if((decision==="Si") || (decision==="si")|| (decision==="sI") || (decision==="SI")){
-      //Llamo la funcion de mostrar productos
-       mostrarProductos()
-
-    }
-
-    else if((decision==="No") || (decision==="no")|| (decision==="nO") || (decision==="NO")){
-      alert("Gracias vuelva pronto")
-    }
+let boton = document.getElementById("button");
+boton.onclick = () => {
+let abrigo = document.getElementById("abrigo");
+let precio1 = parseInt(abrigo.options[abrigo.selectedIndex].value);
+let pantalon = document.getElementById("pantalon");
+let precio2 = parseInt(pantalon.options[pantalon.selectedIndex].value);
+let remera = document.getElementById("remera");
+let precio3 = parseInt(remera.options[remera.selectedIndex].value);
+let suma = `Total a pagar es $ ${precio1 + precio2 + precio3}`;
+document.getElementById("resultado").value = suma;
+};
