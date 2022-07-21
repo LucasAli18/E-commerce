@@ -5,11 +5,12 @@ function renderProductosCarrito(){
     <table class="table">`;
   
     for (let producto of productos){
-      contenido += `<tabla>
+        let precio = producto.precio * producto.cantidad;
+      contenido += `
       <tr>
       <td><img src="${producto.imagen}" width="60px" height="80px" alt=${producto.nombre}</td>
       <td>${producto.nombre}</td>
-      <td>${producto.precio}</td>
+      <td>${precio}</td>
       <td>${producto.cantidad}</td>
       <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/wombatlogo.png" width="24" onclick="eliminarCarrito(${producto.id})"></a></td>
       </tr>`;
@@ -50,6 +51,18 @@ function renderProductosCarrito(){
   function buscarProducto(id){
     let productos = obtenerProductosLS()
     return productos.find(x => x.id == id);
+  }
+let total = 6000
+
+  function comprarCarrito(){
+    contenido = ``
+    document.getElementById("main_carrito").innerHTML = contenido;
+    alerta = `<div class="alert alert-success" role="alert">
+    Gracias por su compra de un total de $${total}
+    </div>`
+
+    document.getElementById("alerta").innerHTML = alerta;
+    vaciarCarrito();    
   }
 
   renderProductosCarrito();
