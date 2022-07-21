@@ -1,124 +1,159 @@
+// Defino el stock de productos
+
+/* const productos = [
+  {
+      id: 1,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"../img/SW_lanilla_G.jpg",
+      stock:5
+  },
+  {
+      id: 2,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"../img/SW_lanilla_N.jpg",
+      stock:5
+  },
+  {
+      id: 3,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"../img/SW_lanilla_G.jpg",
+      stock:5
+  },
+  {
+      id: 4,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"../img/SW_lanilla_N.jpg",
+      stock:5
+  },
+  {
+      id: 5,
+      nombre: "Jogger Azul",
+      precio: 5100,
+      imagen:"../img/SW_lanilla_B.jpg",
+      stock:5
+  }
+  
+];
+
 // Funciones
-function solicitarNombre(){
 
-  let nombre = prompt("Ingrese su nombre");
-
-
-  while ((nombre == "") || (nombre == null)) {
-    nombre = prompt("Ingresá tu nombre por favor.");
-  }
-  alert("Bienvenido a Wombat Shorwoom "+ nombre);
-
-  return nombre;
+function obtenerProductosLS(){
+  return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
-function mostrarProductos(){
-  let producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir");
-  while(producto<1 || producto>8){
-    producto = prompt("Que prenda de ropa elegis \n1)Sweater \n2)Jogger \n3)Remera \n4) Ver carrito \n5) Finalizar compra \n6)Consultar precio \n7) Salir")
-  }
-  switch(producto){
-    case "1":
-      total += prenda3.precio;
-      carrito.push(prenda3.tipo);
-      alert("Se agrego:" + prenda3.tipo +" al carrito de la marca "+prenda3.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-    break
-    case "2":
-      total += total += prenda1.precio;
-      carrito.push(prenda1.tipo);
-      alert("Se agrego:" + prenda1.tipo +" al carrito de la marca "+prenda1.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-    break
-    case "3":
-      total += prenda2.precio;
-      carrito.push(prenda2.tipo);
-      alert("Se agrego:" + prenda2.tipo +" al carrito de la marca "+prenda2.marca);
-      alert(carrito + "\n" + total)
-      mostrarProductos();
-      break
-    case "4":
-      alert(carrito + "\n\n$" + total)
-      console.log(carrito);
-      mostrarProductos();
-      break
-    case "5":
-      alert("Gracias por su compra");
-      let resumen = document.createElement("div");
-      resumen.innerHTML = '<p class="text-light bg-dark border border-info fs-3 text-center">Gracias por elegirnos! Su pago total fue: $'+ total +'</p>'
-      document.body.appendChild(resumen)
-      break
-    case "6":
-        let prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"));
-        while(prendabuscada<1 || prendabuscada>3){
-          prendabuscada = parseFloat(prompt("Escribir ID de la prenda que desea saber el precio: \n1.Jogger \n2.Remera \n3.Sweater"))};
-        let resultado = RopaEnVenta.find((el) => el.id === prendabuscada);
-        console.log(resultado);
-        alert("El precio del " + resultado.tipo + " es " + resultado.precio);
-        resultado = "";
-        mostrarProductos();
-        break
-      case "7":
-        alert("Gracias vuelva pronto");
-        break
-    default:
-      alert("Elija una opción");
-      mostrarProductos();
-      break
-  }
+function guardarProductosLS(productos){
+  localStorage.setItem("productos", JSON.stringify(productos));
+}
+ */
+
+/* function obtenerProductosCarrito(){
+  return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-function decidir(){
-  let decision = prompt("Estas con ganas de renovar tu outfit "+ nombre +"? \n Si \n No ");
-  while(decision === "") {
-    decision = prompt("Estas con ganas de renovar tu outfit "+ nombre +"? \n Si \n No ");
-  }
-    return decision
-}
+function guardarProductosCarrito(productos){
+  localStorage.setItem("carrito", JSON.stringify(productos));
+} */
 
-// Array
-const RopaEnVenta = [];
-const carrito = [];
+function renderProducto(){
+  let productos = obtenerProductosLS();
+  let catalogo = "";
 
-//Declaro las variables
-let sweater = 4000;
-let jogger = 5000;
-let remera = 2000;
-let total = 0;
-
-// Objetos
-class Prenda {
-  constructor(id, tipo, marca, precio) {
-      this.id = id;
-      this.tipo = tipo
-      this.marca = marca;
-      this.precio = precio;
-  }
-}
-
-const prenda1 = new Prenda(1, " Jogger ", "Kevingstone", 5000);
-const prenda2 = new Prenda(2," Remera ", "Orso Bianco", 2000);
-const prenda3 = new Prenda(3, " Sweater ", "Hollister" , 4000);
-
-RopaEnVenta.push(prenda1);
-RopaEnVenta.push(prenda2);
-RopaEnVenta.push(prenda3);
-
-console.log(RopaEnVenta);
-
-
-//Comenzamos
-let nombre = solicitarNombre()
-//Llamo la funcion de decidir
-let decision = decidir()
-    if((decision==="Si") || (decision==="si")|| (decision==="sI") || (decision==="SI")){
-      //Llamo la funcion de mostrar productos
-       mostrarProductos()
-
+    for (let prenda of productos)
+    {
+      catalogo += `<div class="col-md-4>"
+      <div class="card" style="width: 18rem;">
+      <img src="${prenda.imagen}" class="card-img-top m-3" alt="${prenda.nombre}">
+      <div class="card-body">
+        <h5 class="card-title">${prenda.nombre}</h5>
+        <p class="card-text">$${prenda.precio}</p>
+        <a href="#" class="btn btn-primary" onclick="agregarCarrito(${prenda.id})">Añadir</a>
+      </div>
+      </div>
+      </div>`
     }
+  
+  document.getElementById("productos").innerHTML = catalogo;
+}
 
-    else if((decision==="No") || (decision==="no")|| (decision==="nO") || (decision==="NO")){
-      alert("Gracias vuelva pronto")
+/* function actualizarBotonCarrito(){
+
+  let productos = obtenerProductosCarrito();
+  let contenido = `<button type="button" class="btn btn-danger position-relative">
+  <img src="../img/carrito.png" width="24">
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></button>`;
+  
+  let total = 0;
+  
+   if(productos.length > 0){
+    for(let producto of productos){
+      total += producto.cantidad;
     }
+    contenido = `<button type="button" class="btn btn-danger position-relative">
+    <img src="../img/carrito.png" width="24">
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${total}</span></button>`;
+  }
+  
+  document.getElementById("carritoShop").innerHTML = contenido;
+
+} */
+
+/* function buscarProducto(id){
+  let productos = obtenerProductosLS()
+  return productos.find(x => x.id == id);
+} */
+
+/* function agregarCarrito(id){
+  let producto = buscarProducto(id);
+  let producto_carrito = obtenerProductosCarrito();
+  producto.cantidad = 1;
+  producto_carrito.push(producto);
+  guardarProductosCarrito(producto_carrito);
+  actualizarBotonCarrito();
+} */
+
+/* function eliminarCarrito(id){
+  let producto = buscarProducto(id);
+  let producto_carrito = obtenerProductosCarrito();
+  let pos = producto_carrito.findIndex(x=> x.id == id);
+  producto_carrito[pos].cantidad -= 1;
+
+  if(producto_carrito[pos].cantidad == 0){
+    producto_carrito.splice(pos,1);
+  }
+  guardarProductosCarrito(producto_carrito);
+  actualizarBotonCarrito();
+  renderProductosCarrito();
+} */
+
+/* function renderProductosCarrito(){
+  let productos = obtenerProductosCarrito();
+  let contenido = `<p class="text-end"><a href="#" class="btn btn-danger" onclick="vaciarCarrito()"
+  title="Vaciar Carrito">Vaciar Carrito<img src="../img/wombatlogo.png" width="24"></a></p>
+  <table class="table">`;
+
+  for (let producto of productos){
+    contenido += `<tabla>
+    <tr>
+    <td><img src="${producto.imagen}" width="60px" height="80px" alt=${producto.nombre}</td>
+    <td>${producto.nombre}</td>
+    <td>${producto.precio}</td>
+    <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/wombatlogo.png" width="24" onclick="eliminarCarrito(${producto.id})"></a></td>
+    </tr>`;
+  }
+  contenido += `</tabla>`;
+  document.getElementById("productosCarrito").innerHTML = contenido;
+} */
+
+/* function vaciarCarrito(){
+  localStorage.removeItem("carrito");
+  actualizarBotonCarrito()
+  renderProductosCarrito();
+} */
+
+guardarProductosLS(productos);
+actualizarBotonCarrito();
+renderProducto();
