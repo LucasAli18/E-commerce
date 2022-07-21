@@ -30,13 +30,22 @@ function obtenerProductosCarrito(){
   }
 
   function agregarCarrito(id){
-    let producto = buscarProducto(id);
     let producto_carrito = obtenerProductosCarrito();
-    producto.cantidad = 1;
-    producto_carrito.push(producto);
+    let pos = producto_carrito.findIndex(x=> x.id == id);
+
+    if(pos > -1){       
+        producto_carrito[pos].cantidad += 1;
+    } else {
+
+        let producto = buscarProducto(id);
+        producto.cantidad = 1;
+        producto_carrito.push(producto);
+    }
+
     guardarProductosCarrito(producto_carrito);
     actualizarBotonCarrito();
   }
+
   function eliminarCarrito(id){
     let producto = buscarProducto(id);
     let producto_carrito = obtenerProductosCarrito();

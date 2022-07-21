@@ -10,6 +10,7 @@ function renderProductosCarrito(){
       <td><img src="${producto.imagen}" width="60px" height="80px" alt=${producto.nombre}</td>
       <td>${producto.nombre}</td>
       <td>${producto.precio}</td>
+      <td>${producto.cantidad}</td>
       <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/wombatlogo.png" width="24" onclick="eliminarCarrito(${producto.id})"></a></td>
       </tr>`;
     }
