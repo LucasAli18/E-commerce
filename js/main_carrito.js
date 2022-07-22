@@ -1,41 +1,51 @@
 function renderProductosCarrito(){
     let productos = obtenerProductosCarrito();
     let contenido = `<p class="text-end"><a href="#" class="btn btn-danger" onclick="vaciarCarrito()"
-    title="Vaciar Carrito">Vaciar Carrito<img src="../img/wombatlogo.png" width="24"></a></p>
+    title="Vaciar Carrito">Vaciar Carrito<img src="../img/basura.png" width="24"></a></p>
     <table class="table">`;
-  
-    for (let producto of productos){
-        let precio = producto.precio * producto.cantidad;
+    contenido += `<tr><td></td><td>Producto</td><td>Precio</td><td>Cantidad</td></tr>`
+    for (let prenda of productos){
+      let precio = prenda.precio * prenda.cantidad;
       contenido += `
       <tr>
-      <td><img src="${producto.imagen}" width="60px" height="80px" alt=${producto.nombre}</td>
-      <td>${producto.nombre}</td>
-      <td>${precio}</td>
-      <td>${producto.cantidad}</td>
-      <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/wombatlogo.png" width="24" onclick="eliminarCarrito(${producto.id})"></a></td>
-      </tr>`;
+      <td><img src="${prenda.imagen}" width="60px" height="80px"</td>
+      <td>${prenda.nombre}</td>
+      <td>$ ${precio}</td>
+      <td><a href="#" onclick="eliminarItemCarrito(${prenda.id})"><img src="../img/menos.png" width="15px" height="15px"></a>${prenda.cantidad}<a href="#" onclick="agregarCarrito(${prenda.id})"><img src="../img/mas.png" width="20px" height="20px"></a></td>
+      <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/basura.png" width="24" onclick="eliminarItemCarrito(${prenda.id})"></a></td>
+      </tr>
+      `;
     }
-    contenido += `</tabla>`;
-    document.getElementById("productosCarrito").innerHTML = contenido;
+    contenido += `</table>`;
+    document.getElementById("productosCarrito").innerHTML = contenido ;
   }
 
   function agregarCarrito(id){
-    let producto = buscarProducto(id);
     let producto_carrito = obtenerProductosCarrito();
-    producto.cantidad = 1;
-    producto_carrito.push(producto);
+    let posicion = producto_carrito.findIndex(prenda=> prenda.id == id);
+
+    if(posicion > -1){       
+        producto_carrito[posicion].cantidad += 1;
+    } else {
+
+        let producto = buscarPrenda(id);
+        producto.cantidad = 1;
+        producto_carrito.push(producto);
+    }
+
     guardarProductosCarrito(producto_carrito);
     actualizarBotonCarrito();
+    renderProductosCarrito();
   }
-  
-  function eliminarCarrito(id){
-    let producto = buscarProducto(id);
+
+
+  function eliminarItemCarrito(id){
+    let producto = buscarPrenda(id);
     let producto_carrito = obtenerProductosCarrito();
-    let pos = producto_carrito.findIndex(x=> x.id == id);
-    producto_carrito[pos].cantidad -= 1;
-  
-    if(producto_carrito[pos].cantidad == 0){
-      producto_carrito.splice(pos,1);
+    let posicion = producto_carrito.findIndex(ropa=> ropa.id == id);
+    producto_carrito[posicion].cantidad -= 1;
+    if(producto_carrito[posicion].cantidad == 0){
+      producto_carrito.splice(posicion,1);
     }
     guardarProductosCarrito(producto_carrito);
     actualizarBotonCarrito();
@@ -44,25 +54,27 @@ function renderProductosCarrito(){
 
   function vaciarCarrito(){
     localStorage.removeItem("carrito");
-    actualizarBotonCarrito()
+    actualizarBotonCarrito();
     renderProductosCarrito();
+
   }
 
-  function buscarProducto(id){
+  function buscarPrenda(id){
     let productos = obtenerProductosLS()
-    return productos.find(x => x.id == id);
+    return productos.find(prenda => prenda.id == id);
   }
-let total = 6000
+
+  
+  renderProductosCarrito();
 
   function comprarCarrito(){
-    contenido = ``
-    document.getElementById("main_carrito").innerHTML = contenido;
+  contenido = `` 
+    document.getElementById("main_carrito").innerText = contenido;
+
     alerta = `<div class="alert alert-success" role="alert">
-    Gracias por su compra de un total de $${total}
+    Gracias por su compra, esperamos verlo de nuevo
     </div>`
 
     document.getElementById("alerta").innerHTML = alerta;
     vaciarCarrito();    
   }
-
-  renderProductosCarrito();
