@@ -4,7 +4,7 @@ const productos = [
     {
         id: 1,
         nombre: "Lanilla Gris",
-        precio: 5100,
+        precio: 4000,
         imagen:"../img/SW_lanilla_G.jpg",
         cantidad:0,
         
@@ -12,7 +12,7 @@ const productos = [
     {
         id: 2,
         nombre: "Lanilla Negro",
-        precio: 5100,
+        precio: 4000,
         imagen:"../img/SW_lanilla_N.jpg",
         cantidad:0,
         
@@ -20,7 +20,7 @@ const productos = [
     {
         id: 3,
         nombre: "Lanilla Blanco",
-        precio: 5100,
+        precio: 4000,
         imagen:"../img/SW_lanilla_B.jpg",
         cantidad:0,
         
@@ -28,7 +28,7 @@ const productos = [
     {
         id: 4,
         nombre: "Remera Azul",
-        precio: 5100,
+        precio: 2000,
         imagen:"../img/Rem_boton_A.jpg",
         cantidad:0,
         
@@ -36,7 +36,7 @@ const productos = [
     {
         id: 5,
         nombre: "Remera Bordo",
-        precio: 5100,
+        precio: 2000,
         imagen: "../img/Rem_boton_B.jpg",
         cantidad:0,
         
@@ -44,7 +44,7 @@ const productos = [
     {
         id: 5,
         nombre: "Sweatter Morado",
-        precio: 5100,
+        precio: 4800,
         imagen: "../img/SW_algodon_M.jpg",
         cantidad:0,
         
@@ -52,7 +52,7 @@ const productos = [
     {
         id: 5,
         nombre: "Sweatter Naranja",
-        precio: 5100,
+        precio: 4800,
         imagen: "../img/SW_algodon_N.jpg",
         cantidad:0,
         
@@ -60,7 +60,7 @@ const productos = [
     {
         id: 5,
         nombre: "Sweatter Celeste",
-        precio: 5100,
+        precio: 4800,
         imagen: "../img/SW_algodon_C.jpg",
         cantidad:0,
         
@@ -79,8 +79,8 @@ const productos = [
   }
 
   function buscarPrenda(id){
-    let prenda = obtenerProductosLS()
-    return prenda.find(ropa => ropa.id == id);
+    let ropa = obtenerProductosLS()
+    return ropa.find(prenda => prenda.id == id);
   }
 
 function obtenerProductosCarrito(){
@@ -112,7 +112,7 @@ function obtenerProductosCarrito(){
   
   }
 
-  function agregarCarrito(id){
+   function agregarCarrito(id){
     let producto_carrito = obtenerProductosCarrito();
     let posicion = producto_carrito.findIndex(prenda=> prenda.id == id);
 
@@ -127,23 +127,4 @@ function obtenerProductosCarrito(){
 
     guardarProductosCarrito(producto_carrito);
     actualizarBotonCarrito();
-  }
-
-  function eliminarItemCarrito(id){
-    let producto = buscarPrenda(id);
-    let producto_carrito = obtenerProductosCarrito();
-    let pos = producto_carrito.findIndex(x=> x.id == id);
-    producto_carrito[pos].cantidad -= 1;
-  
-    if(producto_carrito[pos].cantidad == 0){
-      producto_carrito.splice(pos,1);
-    }
-    guardarProductosCarrito(producto_carrito);
-    actualizarBotonCarrito();
-    renderProductosCarrito();
-  }
-  function vaciarCarrito(){
-    localStorage.removeItem("carrito");
-    actualizarBotonCarrito()
-    renderProductosCarrito();
   }
