@@ -52,20 +52,34 @@ function renderProductosCarrito(){
     renderProductosCarrito();
   }
 
-  function vaciarCarrito(){
-    localStorage.removeItem("carrito");
-    actualizarBotonCarrito();
-    renderProductosCarrito();
-
+   function vaciarCarrito(){
+    Swal.fire({
+      title: 'Seguro quieres vaciar el carrito🙁?',
+      text: "Se borrara todo lo cargado en el carrito",
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("carrito");
+        actualizarBotonCarrito();
+        renderProductosCarrito();
+        Swal.fire(
+          'Vacio!',
+          'Tu carrito fue vaciado.',
+          'success'
+        )
+      }
+    })
   }
+
 
   function buscarPrenda(id){
     let productos = obtenerProductosLS()
     return productos.find(prenda => prenda.id == id);
   }
-
-  
-  renderProductosCarrito();
 
   function comprarCarrito(){
   contenido = `` 
@@ -76,5 +90,9 @@ function renderProductosCarrito(){
     </div>`
 
     document.getElementById("alerta").innerHTML = alerta;
-    vaciarCarrito();    
+    localStorage.removeItem("carrito");
+    actualizarBotonCarrito();
   }
+  
+  renderProductosCarrito();
+  

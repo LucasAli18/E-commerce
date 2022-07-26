@@ -4,16 +4,13 @@ function renderProducto(){
 
     for (let prenda of productos)
     {
-      catalogo += `<div class="col-md-4>"
-      <div class="card" style="width: 18rem;">
-      <img src="${prenda.imagen}" class="card-img" alt="${prenda.nombre}">
-      <article class="card-body">
-        <h5 class="card-title">${prenda.nombre}</h5>
-        <p class="card-text">$${prenda.precio}</p>
-        <a href="#" class="btn btn-info" onclick="agregarCarrito(${prenda.id})">Añadir</a>
-      </article>
-      </div>
-      </div>`
+      catalogo +=
+      `<figure>
+       <img src="${prenda.imagen}" alt="${prenda.nombre}">
+           <figcaption>${prenda.nombre}</figcaption>
+           <p>$${prenda.precio}</p>
+           <a href="#" class="btn btn-info" onclick="agregarCarrito(${prenda.id})">Añadir</a>
+      </figure>`
     }
   
   document.getElementById("productos").innerHTML = catalogo;

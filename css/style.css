@@ -35,12 +35,46 @@ table{
   margin: 1em;
 }
 
-#productos div{
+/* #productos div{
   margin: 1em;
   padding: 1em;
-}
+} */
 
-#productos div:hover{
+/* #productos div:hover{
   box-shadow: 3px 4px 32px 5px rgba(0, 0, 0, 0.384);
   transition: all 1s ease;
+} */
+
+.catalogo{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.catalogo figure{
+  width: 20%;
+  margin: 1em;
+  padding: 1em;
+  border: .1em black solid;
+}
+
+.catalogo figcaption{
+  font-size: 1em;
+  font-weight: 400;
+  text-align: center;
+}
+
+.catalogo p{
+  font-size: 1em;
+  text-align: center;
+}
+
+.catalogo img{
+  width: 100%;
+}
+
+.catalogo a{
+  background-color: rgb(163, 255, 243);
+  border: black .1em solid;
 }

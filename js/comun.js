@@ -1,75 +1,78 @@
 // Defino el stock de productos
 
 const productos = [
-    {
-        id: 1,
-        nombre: "Lanilla Gris",
-        precio: 4000,
-        imagen:"../img/SW_lanilla_G.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 2,
-        nombre: "Lanilla Negro",
-        precio: 4000,
-        imagen:"../img/SW_lanilla_N.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 3,
-        nombre: "Lanilla Blanco",
-        precio: 4000,
-        imagen:"../img/SW_lanilla_B.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 4,
-        nombre: "Remera Azul",
-        precio: 2000,
-        imagen:"../img/Rem_boton_A.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 5,
-        nombre: "Remera Bordo",
-        precio: 2000,
-        imagen: "../img/Rem_boton_B.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 5,
-        nombre: "Sweatter Morado",
-        precio: 4800,
-        imagen: "../img/SW_algodon_M.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 5,
-        nombre: "Sweatter Naranja",
-        precio: 4800,
-        imagen: "../img/SW_algodon_N.jpg",
-        cantidad:0,
-        
-    },
-    {
-        id: 5,
-        nombre: "Sweatter Celeste",
-        precio: 4800,
-        imagen: "../img/SW_algodon_C.jpg",
-        cantidad:0,
-        
-    }
-    
-  ];
+  {
+      id: 1,
+      nombre: "Lanilla Gris",
+      precio: 4000,
+      imagen:"./img/SW_lanilla_G.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 2,
+      nombre: "Lanilla Negro",
+      precio: 4000,
+      imagen:"./img/SW_lanilla_N.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 3,
+      nombre: "Lanilla Blanco",
+      precio: 4000,
+      imagen:"./img/SW_lanilla_B.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 4,
+      nombre: "Remera Azul",
+      precio: 2000,
+      imagen:"./img/Rem_boton_A.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 5,
+      nombre: "Remera Bordo",
+      precio: 2000,
+      imagen: "./img/Rem_boton_B.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 6,
+      nombre: "Sweatter Morado",
+      precio: 4800,
+      imagen: "./img/SW_algodon_M.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 7,
+      nombre: "Sweatter Naranja",
+      precio: 4800,
+      imagen: "./img/SW_algodon_N.jpg",
+      cantidad:0,
+      
+  },
+  {
+      id: 8,
+      nombre: "Sweatter Celeste",
+      precio: 4800,
+      imagen: "./img/SW_algodon_C.jpg",
+      cantidad:0,
+      
+  }
+  
+];
   
   // FUNCIONES
   
+  //Local Storage
+        //Stock
+
   function obtenerProductosLS(){
     return JSON.parse(localStorage.getItem("productos")) || [];
   }
@@ -77,19 +80,26 @@ const productos = [
   function guardarProductosLS(productos){
     localStorage.setItem("productos", JSON.stringify(productos));
   }
+        //Carrito
+
+  function obtenerProductosCarrito(){
+      return JSON.parse(localStorage.getItem("carrito")) || [];
+    }
+    
+    function guardarProductosCarrito(productos){
+      localStorage.setItem("carrito", JSON.stringify(productos));
+    }
+
+  // --------------------------------------------------------------
+
+  // Buscar la prenda del array
 
   function buscarPrenda(id){
     let ropa = obtenerProductosLS()
     return ropa.find(prenda => prenda.id == id);
   }
 
-function obtenerProductosCarrito(){
-    return JSON.parse(localStorage.getItem("carrito")) || [];
-  }
-  
-  function guardarProductosCarrito(productos){
-    localStorage.setItem("carrito", JSON.stringify(productos));
-  }
+  // --------------------------------------------------------------
 
   function actualizarBotonCarrito(){
     let productos = obtenerProductosCarrito();
@@ -124,6 +134,15 @@ function obtenerProductosCarrito(){
         producto.cantidad = 1;
         producto_carrito.push(producto);
     }
+
+    Toastify({
+      text: "Agregaste una prenda al carrito",
+      className: "info",
+      duration: 1000,
+      style: {
+        background: "linear-gradient(to right, #4facfe, #00f2fe)",
+      }
+    }).showToast();
 
     guardarProductosCarrito(producto_carrito);
     actualizarBotonCarrito();
