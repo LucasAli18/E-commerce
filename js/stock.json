@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "nombre": "Sweatter de Lanilla Gris",
+        "precio": "4000",
+        "imagen":"./img/SW_lanilla_G.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 2,
+        "nombre": "Sweatter de Lanilla Negro",
+        "precio": "4000",
+        "imagen":"./img/SW_lanilla_N.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 3,
+        "nombre": "Sweatter de Lanilla Blanco",
+        "precio": "4000",
+        "imagen":"./img/SW_lanilla_B.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 4,
+        "nombre": "Remera Azul",
+        "precio": "2000",
+        "imagen":"./img/Rem_boton_A.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 5,
+        "nombre": "Remera Bordo",
+        "precio": "2000",
+        "imagen": "./img/Rem_boton_B.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 6,
+        "nombre": "Sweatter Morado",
+        "precio": "4800",
+        "imagen": "./img/SW_algodon_M.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 7,
+        "nombre": "Sweatter Naranja",
+        "precio": "4800",
+        "imagen": "./img/SW_algodon_N.jpg",
+        "cantidad":"0"
+        
+    },
+    {
+        "id": 8,
+        "nombre": "Sweatter Celeste",
+        "precio": "4800",
+        "imagen": "./img/SW_algodon_C.jpg",
+        "cantidad":"0"
+        
+    }
+    
+  ]

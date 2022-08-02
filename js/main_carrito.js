@@ -1,7 +1,7 @@
 function renderProductosCarrito(){
     let productos = obtenerProductosCarrito();
     let contenido = `<p class="text-end"><a href="#" class="btn btn-danger" onclick="vaciarCarrito()"
-    title="Vaciar Carrito">Vaciar Carrito<img src="../img/basura.png" width="24"></a></p>
+    title="Vaciar Carrito">Vaciar Carrito<img src="./img/basura.png" width="24"></a></p>
     <table class="table">`;
     contenido += `<tr><td></td><td>Producto</td><td>Precio</td><td>Cantidad</td></tr>`
     for (let prenda of productos){
@@ -11,8 +11,8 @@ function renderProductosCarrito(){
       <td><img src="${prenda.imagen}" width="60px" height="80px"</td>
       <td>${prenda.nombre}</td>
       <td>$ ${precio}</td>
-      <td><a href="#" onclick="eliminarItemCarrito(${prenda.id})"><img src="../img/menos.png" width="15px" height="15px"></a>${prenda.cantidad}<a href="#" onclick="agregarCarrito(${prenda.id})"><img src="../img/mas.png" width="20px" height="20px"></a></td>
-      <td class="text-end"><a href="#" class="btn btn-danger"><img src="../img/basura.png" width="24" onclick="eliminarItemCarrito(${prenda.id})"></a></td>
+      <td><a href="#" onclick="eliminarItemCarrito(${prenda.id})"><img src="./img/menos.png" width="15px" height="15px"></a>${prenda.cantidad}<a href="#" onclick="agregarCarrito(${prenda.id})"><img src="./img/mas.png" width="20px" height="20px"></a></td>
+      <td class="text-end"><a href="#" class="btn btn-danger"><img src="./img/basura.png" width="24" onclick="eliminarItemCarrito(${prenda.id})"></a></td>
       </tr>
       `;
     }
