@@ -34,7 +34,7 @@
   function actualizarBotonCarrito(){
     let productos = obtenerProductosCarrito();
     let contenido = `<button type="button" class="btn btn-danger position-relative">
-    <img src="../img/carrito.png" width="24">
+    <img src="./img/carrito.png" width="24">
     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></button>`;
     
     let total = 0;
@@ -44,7 +44,7 @@
         total += producto.cantidad;
       }
       contenido = `<div class="sticky-top"><button type="button" class="btn btn-danger position-relative">
-      <img src="../img/carrito.png" width="24">
+      <img src="./img/carrito.png" width="24">
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${total}</span></button></div>`;
     }
     
