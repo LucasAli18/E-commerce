@@ -82,11 +82,17 @@ function renderProductosCarrito(){
   }
 
   function comprarCarrito(){
+    let productos = obtenerProductosCarrito();
+    let total = 0;
+    for (let prenda of productos){
+      let precio = prenda.precio * prenda.cantidad;
+      total = precio + total;
+    }
   contenido = `` 
     document.getElementById("main_carrito").innerText = contenido;
 
     alerta = `<div class="alert alert-success" role="alert">
-    Gracias por su compra, esperamos verlo de nuevo
+    Gracias por su compra de $${total}, esperamos verlo de nuevo
     </div>`
 
     document.getElementById("alerta").innerHTML = alerta;

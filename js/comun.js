@@ -43,9 +43,9 @@
       for(let producto of productos){
         total += producto.cantidad;
       }
-      contenido = `<button type="button" class="btn btn-danger position-relative">
+      contenido = `<div class="sticky-top"><button type="button" class="btn btn-danger position-relative">
       <img src="../img/carrito.png" width="24">
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${total}</span></button>`;
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${total}</span></button></div>`;
     }
     
     document.getElementById("carritoShop").innerHTML = contenido;
@@ -66,9 +66,9 @@
     }
     
     Toastify({
-      text: `Agregaste ${ropa.nombre} nueva al carrito`,
+      text: `Agregaste ${ropa.nombre} al carrito`,
       className: "info",
-      duration: 1000,
+      duration: 1500,
       style: {
         background: "linear-gradient(to right, #4facfe, #00f2fe)",
       }
